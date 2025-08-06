@@ -1,17 +1,17 @@
 namespace TestProject
 {
-    public class UIPopup : UIWindowBase
+    public abstract class UIPopup : UIWindowBase
     {
         protected override void Awake()
         {
             base.Awake();
             if (OpenButton != null)
             {
-                OpenButton.onClick.AddListener(() => uiManager.OpenPopup(this));
+                OpenButton.onClick.AddListener(() => UiManager.OpenPopup(this));
             }
             if (CloseButton != null)
             {
-                CloseButton.onClick.AddListener(() => uiManager.ClosePopup(this));
+                CloseButton.onClick.AddListener(() => UiManager.ClosePopup(this));
             }
         }
     }

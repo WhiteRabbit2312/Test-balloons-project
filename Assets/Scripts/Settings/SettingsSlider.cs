@@ -3,21 +3,26 @@ using UnityEngine.UI;
 
 namespace TestProject
 {
+    [RequireComponent(typeof(Slider))]
     public class SettingsSlider : MonoBehaviour
     {
-        [SerializeField] private Slider _slider;
         [SerializeField] private Button _decreaseSoundButton;
         [SerializeField] private Button _increaseSoundButton;
+        [SerializeField] private Button _saveButton;
 
-        [Space] [SerializeField] private string _settingKey;
+        [Space] 
+        [SerializeField] private string _settingKey;
         [SerializeField] private int _defaultValue;
 
+        private Slider _slider;
         private int _soundVolume;
 
         private void Awake()
         {
+            _slider = GetComponent<Slider>();
             _decreaseSoundButton.onClick.AddListener(Decrease);
             _increaseSoundButton.onClick.AddListener(Increase);
+            _saveButton.onClick.AddListener(SaveSettings);
 
             InitSlider();
         }
@@ -33,7 +38,6 @@ namespace TestProject
             {
                 _soundVolume++;
                 _slider.value = _soundVolume;
-                SaveSettings();
             }
         }
 
@@ -43,7 +47,6 @@ namespace TestProject
             {
                 _soundVolume--;
                 _slider.value = _soundVolume;
-                SaveSettings();
             }
         }
 

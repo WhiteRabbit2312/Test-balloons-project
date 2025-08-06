@@ -1,8 +1,6 @@
-using UnityEngine;
-
 namespace TestProject
 {
-    public class UIManager : MonoBehaviour
+    public class UIManager
     {
         private UIScreen _currentScreen;
         private UIPopup _currentPopup;
