@@ -8,6 +8,7 @@ namespace TestProject
         {
             Container.Bind<PlayerDataService>().AsSingle().NonLazy();
             Container.Bind<LevelManager>().AsSingle();
+            Container.Bind<ShopManager>().AsSingle();
         }
     }
 }

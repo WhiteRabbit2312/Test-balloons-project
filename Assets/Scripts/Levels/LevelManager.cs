@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -39,22 +40,38 @@ namespace TestProject
         
         public int GetStars(LevelData levelData)
         {
-            _playerDataService.PlayerData.StarsByLevel.TryGetValue(levelData.LevelID, out int stars);
-            return stars;
+            LevelStarData data = _playerDataService.PlayerData.StarsByLevel
+                .FirstOrDefault(starData => starData.LevelID == levelData.LevelID);
+        
+            return data != null ? data.StarAmount : 0;
         }
         
         public void CompleteLevel(string levelID, int stars)
         {
             var playerData = _playerDataService.PlayerData;
 
+            // 1. Отмечаем уровень как пройденный
             if (!playerData.CompletedLevels.Contains(levelID))
             {
                 playerData.CompletedLevels.Add(levelID);
             }
 
-            if (!playerData.StarsByLevel.TryGetValue(levelID, out int currentStars) || stars > currentStars)
+            // 2. Обновляем звезды
+            LevelStarData existingData = playerData.StarsByLevel
+                .FirstOrDefault(starData => starData.LevelID == levelID);
+
+            if (existingData != null)
             {
-                playerData.StarsByLevel[levelID] = stars;
+                // Если запись уже есть, обновляем ее, если новый результат лучше
+                if (stars > existingData.StarAmount)
+                {
+                    existingData.StarAmount = stars;
+                }
+            }
+            else
+            {
+                // Если записи нет, создаем новую и добавляем в список
+                playerData.StarsByLevel.Add(new LevelStarData { LevelID = levelID, StarAmount = stars });
             }
 
             _playerDataService.Save();
