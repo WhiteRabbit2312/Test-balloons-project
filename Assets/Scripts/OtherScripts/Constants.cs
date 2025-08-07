@@ -6,6 +6,7 @@ namespace TestProject
 {
     public class Constants : MonoBehaviour
     {
-        public const string GameplaySceneName = "Gameplay";
+        public const string GameplaySceneName = "GameplayScene";
+        public const string LevelSceneName = "LevelScene";
     }
 }

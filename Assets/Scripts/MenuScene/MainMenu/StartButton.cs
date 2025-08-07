@@ -18,7 +18,7 @@ namespace TestProject
         private void StartGame()
         {
             SpawnTransition();
-            SceneManager.LoadSceneAsync(Constants.GameplaySceneName);
+            SceneManager.LoadSceneAsync(Constants.LevelSceneName);
         }
 
         private void SpawnTransition()
