@@ -30,6 +30,7 @@ namespace TestProject
         private void InitSlider()
         {
             _slider.value = PlayerPrefs.GetFloat(_settingKey, _defaultValue);
+            _soundVolume = PlayerPrefs.GetInt(_settingKey, _defaultValue);
         }
 
         private void Increase()
