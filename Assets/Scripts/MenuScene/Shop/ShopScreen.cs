@@ -22,22 +22,29 @@ namespace TestProject
         [SerializeField] private GameObject _shopButtonPrefab;
 
         private List<SkinData> _allSkins;
+        private ShopManager _shopManager;
         private DiContainer _container;
 
         private List<GameObject> _instantiatedPanels = new List<GameObject>();
+        private List<ShopItemButton> _spawnedButtons = new List<ShopItemButton>();
         private int _currentPageIndex = 0;
         
         [Inject]
-        public void Construct(List<SkinData> allSkins, DiContainer container)
+        public void Construct(List<SkinData> allSkins, ShopManager shopManager, DiContainer container)
         {
             _allSkins = allSkins;
             _container = container;
+            _shopManager = shopManager;
+            _shopManager.OnSkinStateChanged += RefreshAllButtonVisuals;
         }
         
         public override void Open()
         {
             base.Open();
-            SetupPages();
+            if (_instantiatedPanels.Count == 0) 
+            {
+                SetupPages();
+            }
             ShowPage(0); 
 
             _nextButton.onClick.AddListener(ShowNextPage);
@@ -49,7 +56,6 @@ namespace TestProject
             base.Close();
             _nextButton.onClick.RemoveListener(ShowNextPage);
             _previousButton.onClick.RemoveListener(ShowPreviousPage);
-            DestroyPanels();
         }
         
         private void SetupPages()
@@ -68,10 +74,19 @@ namespace TestProject
                     GameObject buttonGO = _container.InstantiatePrefab(_shopButtonPrefab, panelGO.transform);
                     ShopItemButton button = buttonGO.GetComponent<ShopItemButton>();
                     button.SetSkinData(skinData);
+                    _spawnedButtons.Add(button);
                 }
             
                 _instantiatedPanels.Add(panelGO);
                 panelGO.SetActive(false); 
+            }
+        }
+        
+        private void RefreshAllButtonVisuals()
+        {
+            foreach (var button in _spawnedButtons)
+            {
+                button.UpdateVisuals();
             }
         }
         
@@ -93,15 +108,9 @@ namespace TestProject
             UpdateNavButtons();
         }
         
-        private void ShowNextPage()
-        {
-            ShowPage(_currentPageIndex + 1);
-        }
+        private void ShowNextPage() => ShowPage(_currentPageIndex + 1);
+        private void ShowPreviousPage() => ShowPage(_currentPageIndex - 1);
 
-        private void ShowPreviousPage()
-        {
-            ShowPage(_currentPageIndex - 1);
-        }
         
         private void UpdateNavButtons()
         {
@@ -115,6 +124,17 @@ namespace TestProject
             {
                 Destroy(panel);
             }
+            _instantiatedPanels.Clear();
+            _spawnedButtons.Clear();
+        }
+
+        private void OnDestroy()
+        {
+            if (_shopManager != null)
+            {
+                _shopManager.OnSkinStateChanged -= RefreshAllButtonVisuals;
+            }
+            DestroyPanels();
         }
     }
 }

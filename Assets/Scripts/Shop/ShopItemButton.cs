@@ -42,19 +42,14 @@ namespace TestProject
         
         private void OnButtonClick()
         {
-            if (!_playerData.PurchasedSkinIDs.Contains(_skinData.SkinID))
+            if (!_shopManager.IsSkinPurchased(_skinData.SkinID))
             {
-                if (_shopManager.TryBuySkin(_skinData))
-                {
-                    _shopManager.SelectSkin(_skinData.SkinID);
-                }
+                _shopManager.TryBuySkin(_skinData);
             }
-            else if (_playerData.SelectedSkinID != _skinData.SkinID)
+            else if (!_shopManager.IsSkinSelected(_skinData.SkinID))
             {
                 _shopManager.SelectSkin(_skinData.SkinID);
             }
-
-            UpdateVisuals();
         }
         
         public void UpdateVisuals()
@@ -63,12 +58,12 @@ namespace TestProject
 
             _skinIcon.sprite = _skinData.SkinSprite;
 
-            if (_playerData.SelectedSkinID == _skinData.SkinID)
+            if (_shopManager.IsSkinSelected(_skinData.SkinID))
             {
                 _buttonText.text = "Selected";
                 _button.interactable = false;
             }
-            else if (_playerData.PurchasedSkinIDs.Contains(_skinData.SkinID))
+            else if (_shopManager.IsSkinPurchased(_skinData.SkinID))
             {
                 _buttonText.text = "Select";
                 _button.interactable = true;
@@ -76,7 +71,7 @@ namespace TestProject
             else
             {
                 _buttonText.text = _skinData.Price.ToString();
-                _button.interactable = _playerData.Coins >= _skinData.Price;
+                _button.interactable = _shopManager.GetPlayerCoins() >= _skinData.Price;
             }
         }
     }

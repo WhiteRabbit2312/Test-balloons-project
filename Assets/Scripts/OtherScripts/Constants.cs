@@ -8,5 +8,7 @@ namespace TestProject
     {
         public const string GameplaySceneName = "GameplayScene";
         public const string LevelSceneName = "LevelScene";
+
+        public const string DefaultSkinID = "default_skin";
     }
 }

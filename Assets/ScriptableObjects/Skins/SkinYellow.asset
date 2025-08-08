@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b69b890e37c3640a7b2f222f9f2544, type: 3}
   m_Name: SkinYellow
   m_EditorClassIdentifier: 
-  SkinID: 0
+  SkinID: default_skin
   SkinSprite: {fileID: 21300000, guid: 9f3e0d89a2189d8418e8e4ea8d2ed5e3, type: 3}
   Price: 1000
