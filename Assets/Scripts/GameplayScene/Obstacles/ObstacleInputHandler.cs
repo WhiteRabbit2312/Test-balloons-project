@@ -11,7 +11,8 @@ namespace TestProject
         [SerializeField] private float _maxSwipeTime = 1f;
         
         [Header("Physics")]
-        [SerializeField] private float _swipeForceScale = 1.0f;
+        [SerializeField] private float _swipeForceScale = 0.05f;
+        [SerializeField] private float _maxForce = 30f;
         
         private Camera _mainCamera;
         private Vector2 _swipeStartPosition;
@@ -57,7 +58,7 @@ namespace TestProject
             if (collectable != null)
             {
                 collectable.OnCollect();
-                return; 
+                return;
             }
 
             IInteractiveObject interactive = hit.collider.GetComponent<IInteractiveObject>();
@@ -79,6 +80,7 @@ namespace TestProject
                 {
                     Vector2 swipeVelocity = (endPos - startPos) / swipeTime;
                     Vector2 forceToApply = swipeVelocity * _swipeForceScale;
+                    forceToApply = Vector2.ClampMagnitude(forceToApply, _maxForce);
                     interactive.OnSwipe(forceToApply);
                 }
             }

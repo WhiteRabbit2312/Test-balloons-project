@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,11 +29,13 @@ namespace TestProject
 
         public abstract void OnCollideWithPlayer(GameObject player);
 
-        protected virtual void OnCollisionEnter2D(Collision2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (collision.gameObject.CompareTag("Player"))
+            Debug.Log($"Player COLLIDED");
+            if (other.gameObject.TryGetComponent(out PlayerController player))
             {
-                OnCollideWithPlayer(collision.gameObject);
+                Debug.Log($"Player COLLIDED {player.name} hit with {ScorePenalty}");
+                OnCollideWithPlayer(other.gameObject);
             }
         }
     }
