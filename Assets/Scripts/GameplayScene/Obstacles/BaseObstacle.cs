@@ -8,9 +8,9 @@ namespace TestProject
     {
         public override void OnCollideWithPlayer(GameObject player)
         {
-            Debug.Log($"Player collided with obstacle {gameObject.name}. Lost {ScorePenalty} points.");
-            // player.GetComponent<PlayerScore>().Decrease(ScorePenalty);
-            Destroy(gameObject);
+            player.GetComponent<PlayerScore>().Decrease(Score);
+            player.GetComponent<PlayerStatus>().DecreaseHealth(HP);
+            Destroy(gameObject, Constants.AnimationDuration);
         }
     }
 }

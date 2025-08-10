@@ -9,26 +9,42 @@ namespace TestProject
     public class PlayerScore : MonoBehaviour
     {
         [SerializeField] private TMP_Text _scoreText;
-        private int _score = 0;
+        public int Score { get; private set; }
+        private float _timer = 0;
+        //public event Action<int> OnScoreChanged;
 
-        private void Awake()
+        private void Start()
         {
-            
+            UpdateScoreText();
         }
 
         private void Update()
         {
-            
-        }
-        
-        public void Increase(int score)
-        {
-            _score += score;
+            _timer += Time.deltaTime;
+            if (_timer >= 0.5f)
+            {
+                Score += 1;
+                UpdateScoreText();
+                _timer = 0f;
+            }
         }
 
-        public void Decrease(int score)
+        public void Increase(int amount)
         {
-            _score -= score;
+            Score += amount;
+            UpdateScoreText();
+        }
+
+        public void Decrease(int amount)
+        {
+            Score = Mathf.Max(0, Score - amount);
+            UpdateScoreText();
+        }
+
+        private void UpdateScoreText()
+        {
+            _scoreText.text = Score.ToString();
+            //OnScoreChanged?.Invoke(Score);
         }
     }
 }

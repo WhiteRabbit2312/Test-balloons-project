@@ -8,7 +8,6 @@ namespace TestProject
     public class MultiTapInteractiveObject : BaseObstacle
     {
         [SerializeField] private int _tapsRequired = 4;
-        
         private int _currentTaps = 0;
 
         public override void OnTap()
@@ -21,7 +20,7 @@ namespace TestProject
             if (_currentTaps >= _tapsRequired)
             {
                 Debug.Log($"{gameObject.name} was destroyed by multiple taps.");
-                Destroy(gameObject);
+                Destroy(gameObject, Constants.AnimationDuration);
             }
         }
     }

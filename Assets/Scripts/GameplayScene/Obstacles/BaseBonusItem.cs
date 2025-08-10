@@ -6,13 +6,11 @@ namespace TestProject
 {
     public class BaseBonusItem : BaseInteractiveObject
     {
-        [SerializeField]
-        protected int ScoreBonus = 20;
-
         public override void OnCollideWithPlayer(GameObject player)
         {
-            Debug.Log($"Player collected bonus {gameObject.name}. Gained {ScoreBonus} points.");
-            // player.GetComponent<PlayerScore>().Increase(ScoreBonus);
+            Debug.Log($"Player collected bonus {gameObject.name}. Gained {Score} points.");
+            player.GetComponent<PlayerScore>().Increase(Score);
+            player.GetComponent<PlayerStatus>().IncreaseHealth(HP);
             Destroy(gameObject);
         }
     }

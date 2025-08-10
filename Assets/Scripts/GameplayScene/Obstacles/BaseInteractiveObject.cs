@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TestProject
 {
@@ -9,7 +10,9 @@ namespace TestProject
     [RequireComponent(typeof(Collider2D))]
     public abstract class BaseInteractiveObject : MonoBehaviour, IInteractiveObject
     {
-        [SerializeField] protected int ScorePenalty = 10;
+        [SerializeField] private ObstacleAnimation _obstacleAnimation;
+        [SerializeField] protected int Score = 10;
+        [SerializeField] protected int HP = 1;
         protected Rigidbody2D Rb;
         
         protected virtual void Awake()
@@ -31,11 +34,23 @@ namespace TestProject
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log($"Player COLLIDED");
             if (other.gameObject.TryGetComponent(out PlayerController player))
             {
-                Debug.Log($"Player COLLIDED {player.name} hit with {ScorePenalty}");
+                _obstacleAnimation.Disappear();
                 OnCollideWithPlayer(other.gameObject);
+            }
+            
+            if (other.CompareTag(Constants.DeadZoneTag))
+            {
+                Destroy(gameObject);
+            }
+            
+            if (other.CompareTag(Constants.PlayAreaTag))
+            {
+                if (gameObject.layer == LayerMask.NameToLayer(Constants.PreGameObjectsName))
+                {
+                    gameObject.layer = LayerMask.NameToLayer(Constants.ActiveObjectsName);
+                }
             }
         }
     }

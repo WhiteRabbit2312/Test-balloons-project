@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3056584311760558782}
   - component: {fileID: 219881143866160132}
   - component: {fileID: 3689299035949869535}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ObstacleSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1f172413a8348e04f9916bdc7d7d348d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 9209856165807029574}
   - component: {fileID: 4897903651499288607}
   - component: {fileID: -5005924066856177521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MultiplyObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,14 +149,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2211081313748839600}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.61
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f10ada8fd448594faebab3badeae2ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleAnimation: {fileID: 0}
   ScorePenalty: 5
 --- !u!58 &-5005924066856177521
 CircleCollider2D:

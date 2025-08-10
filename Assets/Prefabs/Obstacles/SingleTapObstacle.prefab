@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7877036879084103384}
   - component: {fileID: 8554334816318847508}
   - component: {fileID: 4256414018981061411}
-  m_Layer: 0
+  - component: {fileID: 561214857647322016}
+  m_Layer: 8
   m_Name: ObstacleSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 17caf1757c9848341b1c6a25abbed529, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -106,6 +107,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &561214857647322016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941223257339264876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef87c77a64710db49ad66fe9854fb01a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5644025964329778786
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +131,7 @@ GameObject:
   - component: {fileID: 606295406339741492}
   - component: {fileID: 8347392687958482721}
   - component: {fileID: -6991325936870197468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SingleTapObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,14 +162,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5644025964329778786}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.61
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -180,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1289062e2d9e047a076e5e9b8bf13c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleAnimation: {fileID: 561214857647322016}
   ScorePenalty: 20
   _tapsRequired: 4
 --- !u!58 &-6991325936870197468

@@ -24,8 +24,8 @@ namespace TestProject
 
         public virtual void Open()
         {
-            Debug.Log("Open");
-            _mainMenuWindow.SetActive(false);
+            if(_mainMenuWindow != null)
+                _mainMenuWindow.SetActive(false);
             
             Window.alpha = 1f;
             Window.interactable = true;
@@ -34,8 +34,8 @@ namespace TestProject
 
         public virtual void Close()
         {
-            Debug.Log("Close");
-            _mainMenuWindow.SetActive(true);
+            if(_mainMenuWindow != null)
+                _mainMenuWindow.SetActive(true);
             Window.alpha = 0f;
             Window.interactable = false;
             Window.blocksRaycasts = false;
