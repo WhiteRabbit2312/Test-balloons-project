@@ -52,6 +52,8 @@ namespace TestProject
         private void EnablePanel()
         {
             _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.ignoreParentGroups = true;
         }
         
         private int CountReward(int score)

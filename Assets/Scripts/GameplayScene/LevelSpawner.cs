@@ -24,8 +24,8 @@ namespace TestProject
             if (levelPrefab != null)
             {
                 GameObject levelInstance = _container.InstantiatePrefab(levelPrefab, Vector3.zero, Quaternion.identity, null);
-                LevelContext context = levelInstance.GetComponent<LevelContext>();
-                context.Data = _levelManager.CurrentLevelToLoad;
+                //LevelContext context = levelInstance.GetComponent<LevelContext>();
+                //context.Data = _levelManager.CurrentLevelToLoad;
             }
         }
     }
