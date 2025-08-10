@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TestProject
@@ -9,14 +6,12 @@ namespace TestProject
     public class LevelManager
     {
         private readonly PlayerDataService _playerDataService;
-        private readonly List<LevelData> _allLevels;
         
         public LevelData CurrentLevelToLoad { get; private set; }
         
-        public LevelManager(PlayerDataService playerDataService, List<LevelData> allLevels)
+        public LevelManager(PlayerDataService playerDataService)
         {
             _playerDataService = playerDataService;
-            _allLevels = allLevels;
         }
         
         public void StartLevel(LevelData levelData)
@@ -46,23 +41,20 @@ namespace TestProject
             return data != null ? data.StarAmount : 0;
         }
         
-        public void CompleteLevel(string levelID, int stars)
+        public void CompleteLevel(int stars)
         {
             var playerData = _playerDataService.PlayerData;
 
-            // 1. Отмечаем уровень как пройденный
-            if (!playerData.CompletedLevels.Contains(levelID))
+            if (!playerData.CompletedLevels.Contains(CurrentLevelToLoad.LevelID))
             {
-                playerData.CompletedLevels.Add(levelID);
+                playerData.CompletedLevels.Add(CurrentLevelToLoad.LevelID);
             }
 
-            // 2. Обновляем звезды
             LevelStarData existingData = playerData.StarsByLevel
-                .FirstOrDefault(starData => starData.LevelID == levelID);
+                .FirstOrDefault(starData => starData.LevelID == CurrentLevelToLoad.LevelID);
 
             if (existingData != null)
             {
-                // Если запись уже есть, обновляем ее, если новый результат лучше
                 if (stars > existingData.StarAmount)
                 {
                     existingData.StarAmount = stars;
@@ -70,8 +62,7 @@ namespace TestProject
             }
             else
             {
-                // Если записи нет, создаем новую и добавляем в список
-                playerData.StarsByLevel.Add(new LevelStarData { LevelID = levelID, StarAmount = stars });
+                playerData.StarsByLevel.Add(new LevelStarData { LevelID = CurrentLevelToLoad.LevelID, StarAmount = stars });
             }
 
             _playerDataService.Save();

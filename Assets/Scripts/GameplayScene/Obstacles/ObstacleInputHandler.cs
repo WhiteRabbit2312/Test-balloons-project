@@ -13,6 +13,7 @@ namespace TestProject
         [Header("Physics")]
         [SerializeField] private float _swipeForceScale = 0.05f;
         [SerializeField] private float _maxForce = 30f;
+        [SerializeField] private LayerMask _interactableLayers;
         
         private Camera _mainCamera;
         private Vector2 _swipeStartPosition;
@@ -50,7 +51,7 @@ namespace TestProject
         private void ProcessTap(Vector2 screenPosition)
         {
             Ray ray = _mainCamera.ScreenPointToRay(screenPosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, _interactableLayers);
 
             if (hit.collider == null) return;
 
@@ -71,7 +72,7 @@ namespace TestProject
         private void ProcessSwipe(Vector2 startPos, Vector2 endPos, float swipeTime)
         {
             Ray ray = _mainCamera.ScreenPointToRay(startPos);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray);
+            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, _interactableLayers);
 
             if (hit.collider != null)
             {

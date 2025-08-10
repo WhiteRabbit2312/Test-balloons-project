@@ -34,7 +34,7 @@ namespace TestProject
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.TryGetComponent(out PlayerController player))
+            if (other.gameObject.TryGetComponent(out PlayerMovement player))
             {
                 _obstacleAnimation.Disappear();
                 OnCollideWithPlayer(other.gameObject);

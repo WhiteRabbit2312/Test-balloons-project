@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LevelData1
   m_EditorClassIdentifier: 
   <LevelID>k__BackingField: 1
-  <LevelPrefab>k__BackingField: {fileID: 0}
+  <LevelPrefab>k__BackingField: {fileID: 4464746423628328920, guid: a6aae64d933d5f647834d97ddefad13e, type: 3}
   <PrerequisiteLevel>k__BackingField: {fileID: 0}

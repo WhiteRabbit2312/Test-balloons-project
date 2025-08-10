@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TestProject
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed = 5f;
 
