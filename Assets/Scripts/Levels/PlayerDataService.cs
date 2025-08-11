@@ -36,6 +36,7 @@ namespace TestProject
             else
             {
                 PlayerData = new PlayerData();
+                Save();
             }
         }
     }

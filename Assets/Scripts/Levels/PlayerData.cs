@@ -15,10 +15,13 @@ namespace TestProject
 
         public PlayerData()
         {
-            Coins = 1000;
+            Coins = 100000000;
             StarsByLevel = new List<LevelStarData>();
             CompletedLevels = new List<string>();
-            PurchasedSkinIDs = new List<string>();
+            PurchasedSkinIDs = new List<string>
+            {
+                "default_skin"
+            };
             SelectedSkinID = "default_skin"; 
         }
     }
