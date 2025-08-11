@@ -16,6 +16,7 @@ namespace TestProject
         private SkinData _skinData;
         private ShopManager _shopManager;
         private PlayerData _playerData; 
+        private BuyPopUp _buyPopUp;
         
         [Inject]
         public void Construct(ShopManager shopManager, PlayerDataService playerDataService)
@@ -34,9 +35,10 @@ namespace TestProject
             _button.onClick.RemoveListener(OnButtonClick);
         }
         
-        public void SetSkinData(SkinData skinData)
+        public void SetSkinData(SkinData skinData, BuyPopUp buyPopUp)
         {
             _skinData = skinData;
+            _buyPopUp = buyPopUp;
             UpdateVisuals();
         }
         
@@ -44,7 +46,9 @@ namespace TestProject
         {
             if (!_shopManager.IsSkinPurchased(_skinData.SkinID))
             {
-                _shopManager.TryBuySkin(_skinData);
+                //_shopManager.TryBuySkin(_skinData);
+                _buyPopUp.Init(_skinData);
+                _buyPopUp.Open();
             }
             else if (!_shopManager.IsSkinSelected(_skinData.SkinID))
             {

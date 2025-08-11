@@ -12,6 +12,7 @@ namespace TestProject
     {
         [Space]
         [Header("Shop Screen")]
+        [SerializeField] private BuyPopUp _buyPopUp;
         [SerializeField] private int _itemsPerPage = 4;
         [SerializeField] private GameObject _panelPrefab;
         [SerializeField] private Transform _panelsContainer;
@@ -73,7 +74,7 @@ namespace TestProject
                 {
                     GameObject buttonGO = _container.InstantiatePrefab(_shopButtonPrefab, panelGO.transform);
                     ShopItemButton button = buttonGO.GetComponent<ShopItemButton>();
-                    button.SetSkinData(skinData);
+                    button.SetSkinData(skinData, _buyPopUp);
                     _spawnedButtons.Add(button);
                 }
             
