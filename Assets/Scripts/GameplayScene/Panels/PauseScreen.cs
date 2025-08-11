@@ -27,8 +27,9 @@ namespace TestProject
             Time.timeScale = 1;
         }
 
-        public void Home()
+        private void Home()
         {
+            Time.timeScale = 1;
             SceneManager.LoadSceneAsync(Constants.LevelSceneName);
         }
     }

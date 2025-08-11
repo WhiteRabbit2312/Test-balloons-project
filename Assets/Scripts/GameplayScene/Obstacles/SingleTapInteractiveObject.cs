@@ -8,7 +8,6 @@ namespace TestProject
     {
         public override void OnTap()
         {
-            Debug.Log($"{gameObject.name} was destroyed by a tap.");
             Destroy(gameObject, Constants.AnimationDuration);
         }
     }

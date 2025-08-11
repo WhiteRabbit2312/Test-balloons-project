@@ -41,7 +41,10 @@ namespace TestProject
 
         private void Buy()
         {
-            _shopManager.TryBuySkin(_skinData);
+            if (_shopManager.TryBuySkin(_skinData))
+            {
+                Close();
+            }
         }
     }
 }

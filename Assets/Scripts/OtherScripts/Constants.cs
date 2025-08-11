@@ -10,6 +10,7 @@ namespace TestProject
         public const string LevelSceneName = "LevelScene";
 
         public const string DefaultSkinID = "default_skin";
+        public const string PlayerNameID = "PlayerName";
         public const string PlayAreaTag = "PlayArea";
         public const string DeadZoneTag = "DeadZone";
         public const string FinishTag = "Finish";

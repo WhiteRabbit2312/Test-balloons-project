@@ -740,6 +740,9 @@ MonoBehaviour:
   Window: {fileID: 81610172}
   OpenButton: {fileID: 1977835330}
   CloseButton: {fileID: 154331411}
+  _saveButton: {fileID: 1003191628}
+  _playerNameInputField: {fileID: 1219814449}
+  _playerNameText: {fileID: 405267583}
 --- !u!1 &109994205
 GameObject:
   m_ObjectHideFlags: 0
@@ -3118,6 +3121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 535099545}
+  - component: {fileID: 535099546}
   m_Layer: 5
   m_Name: Winner
   m_TagString: Untagged
@@ -3148,6 +3152,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &535099546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535099544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb20d4eb0b75be48b44867f71102cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 1410873739}
+  _scoreText: {fileID: 473691986}
+  _playerIcon: {fileID: 388853201}
+  _background: {fileID: 0}
 --- !u!1 &568475010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,6 +3710,17 @@ MonoBehaviour:
   Window: {fileID: 793282070}
   OpenButton: {fileID: 1479333771}
   CloseButton: {fileID: 446460124}
+  _leaderboardContainer: {fileID: 386495329}
+  _playerInLeaderboardPrefab: {fileID: 4278797128628600833, guid: ec1708012a2c95e4da8bcec83d07c64c, type: 3}
+  _fakePlayerCount: 3
+  _playerNames:
+  - Player1
+  - Player2
+  - Player3
+  _scoreRange: {x: 100, y: 5000}
+  _defaultSprite: {fileID: 21300000, guid: db0cd32bf39029e4ea5c67d9478ce3bd, type: 3}
+  _realPlayerHighlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _topPlayerDisplay: {fileID: 535099546}
 --- !u!1 &793298314
 GameObject:
   m_ObjectHideFlags: 0

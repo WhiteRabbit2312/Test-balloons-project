@@ -9,17 +9,23 @@ namespace TestProject
     public class PlayerScore : MonoBehaviour
     {
         [SerializeField] private TMP_Text _scoreText;
+        [SerializeField] private PlayerFinish _playerFinish;
         public int Score { get; private set; }
         private float _timer = 0;
-        //public event Action<int> OnScoreChanged;
+        private bool _isScoreCount;
 
         private void Start()
         {
+            _isScoreCount = true;
+            _playerFinish.OnFinished += StopCounting;
             UpdateScoreText();
         }
 
         private void Update()
         {
+            if (!_isScoreCount)
+                return;
+            
             _timer += Time.deltaTime;
             if (_timer >= 0.5f)
             {
@@ -29,6 +35,11 @@ namespace TestProject
             }
         }
 
+        private void StopCounting()
+        {
+            _isScoreCount = false;
+        }
+        
         public void Increase(int amount)
         {
             Score += amount;
@@ -44,7 +55,6 @@ namespace TestProject
         private void UpdateScoreText()
         {
             _scoreText.text = Score.ToString();
-            //OnScoreChanged?.Invoke(Score);
         }
     }
 }

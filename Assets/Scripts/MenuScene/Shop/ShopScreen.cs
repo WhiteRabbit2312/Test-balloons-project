@@ -94,6 +94,7 @@ namespace TestProject
             {
                 button.UpdateVisuals();
             }
+            _priceText.text = _playerDataService.PlayerData.Coins.ToString();
         }
         
         private void ShowPage(int index)

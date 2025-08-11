@@ -12,10 +12,12 @@ namespace TestProject
         public string SelectedSkinID;
 
         public int Coins;
+        public int Score;
 
         public PlayerData()
         {
-            Coins = 100000000;
+            Coins = 1000;
+            Score = 0;
             StarsByLevel = new List<LevelStarData>();
             CompletedLevels = new List<string>();
             PurchasedSkinIDs = new List<string>

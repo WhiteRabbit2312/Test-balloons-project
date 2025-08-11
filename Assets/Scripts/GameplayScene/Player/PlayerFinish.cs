@@ -13,7 +13,8 @@ namespace TestProject
         [SerializeField] private EndgameWindow _endgameWindow;
         [SerializeField] private PlayerScore _playerScore;
         [SerializeField] private PanelConfig _panelConfig;
-
+        public event Action OnFinished;
+        
         private CollectableContainer _collectableContainer;
         private LevelManager _levelManager;
         
@@ -39,7 +40,7 @@ namespace TestProject
             yield return new WaitForSeconds(1f);
             _finishWindow.SetActive(false);
             _endgameWindow.Show(_playerScore.Score, _panelConfig);
-            Time.timeScale = 0f;
+            OnFinished?.Invoke();
         }
     }
 }
