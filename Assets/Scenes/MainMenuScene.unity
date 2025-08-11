@@ -580,7 +580,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 71341994}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287272428}
+        m_TargetAssemblyTypeName: TestProject.SettingsScreen, Assembly-CSharp
+        m_MethodName: DecreaseVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &71341994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1490,6 +1502,12 @@ MonoBehaviour:
   Window: {fileID: 287272427}
   OpenButton: {fileID: 1142073668}
   CloseButton: {fileID: 162349588}
+  _soundVolumeSlider: {fileID: 1574200310}
+  _settingSoundKey: Sound
+  _musicVolumeSlider: {fileID: 1210675657}
+  _settingMusicKey: Music
+  _defaultValue: 5
+  _saveButton: {fileID: 962240260}
 --- !u!1 &293146423
 GameObject:
   m_ObjectHideFlags: 0
@@ -4710,7 +4728,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1170980711}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287272428}
+        m_TargetAssemblyTypeName: TestProject.SettingsScreen, Assembly-CSharp
+        m_MethodName: IncreaseVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1170980711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4830,7 +4860,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1172147515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287272428}
+        m_TargetAssemblyTypeName: TestProject.SettingsScreen, Assembly-CSharp
+        m_MethodName: IncreaseVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1172147515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4950,7 +4992,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1182366480}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 287272428}
+        m_TargetAssemblyTypeName: TestProject.SettingsScreen, Assembly-CSharp
+        m_MethodName: DecreaseVolume
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1182366480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4999,7 +5053,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1210675656}
   - component: {fileID: 1210675657}
-  - component: {fileID: 1210675658}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -5080,23 +5133,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1210675658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1210675655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b5ab3ea38a58a41a6e6a03ffae8647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _decreaseSoundButton: {fileID: 71341993}
-  _increaseSoundButton: {fileID: 1170980710}
-  _saveButton: {fileID: 962240260}
-  _settingKey: MusicKey
-  _defaultValue: 5
 --- !u!1 &1214139056
 GameObject:
   m_ObjectHideFlags: 0
@@ -6810,7 +6846,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1574200309}
   - component: {fileID: 1574200310}
-  - component: {fileID: 1574200311}
   m_Layer: 5
   m_Name: SoundSlider
   m_TagString: Untagged
@@ -6891,23 +6926,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1574200311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574200308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4b5ab3ea38a58a41a6e6a03ffae8647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _decreaseSoundButton: {fileID: 1182366479}
-  _increaseSoundButton: {fileID: 1172147514}
-  _saveButton: {fileID: 962240260}
-  _settingKey: SoundKey
-  _defaultValue: 5
 --- !u!1 &1670830331
 GameObject:
   m_ObjectHideFlags: 0
