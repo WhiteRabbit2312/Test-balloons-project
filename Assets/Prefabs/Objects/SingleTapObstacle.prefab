@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacleAnimation: {fileID: 561214857647322016}
-  ScorePenalty: 20
+  Score: 60
+  HP: 1
   _tapsRequired: 4
 --- !u!58 &-6991325936870197468
 CircleCollider2D:

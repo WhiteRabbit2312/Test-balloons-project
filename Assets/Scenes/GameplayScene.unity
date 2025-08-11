@@ -2913,7 +2913,7 @@ MonoBehaviour:
   _maxForce: 15
   _interactableLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 704
 --- !u!1 &1818142383
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 namespace TestProject
 {
@@ -16,6 +17,14 @@ namespace TestProject
         [SerializeField] private Button _tapTpReturnButton;
         
         [SerializeField] private CanvasGroup _canvasGroup;
+
+        private PlayerDataService _playerDataService;
+        
+        [Inject]
+        public void Construct(PlayerDataService playerDataService)
+        {
+            _playerDataService = playerDataService;
+        }
 
         private void Awake()
         {
@@ -37,6 +46,8 @@ namespace TestProject
             if (config.CalculateReward)
             {
                 reward = CountReward(finalScore);
+                _playerDataService.PlayerData.Coins += reward;
+                _playerDataService.Save();
             }
             
             _rewardText.text = reward.ToString();
@@ -58,7 +69,7 @@ namespace TestProject
         
         private int CountReward(int score)
         {
-            int thousands = score / 1000;
+            int thousands = score / 100;
             return thousands * 100;
         }
     }

@@ -194,8 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obstacleAnimation: {fileID: 2563812400396503167}
-  ScorePenalty: 10
-  swipeForceMultiplier: 1
+  Score: 50
+  HP: 1
+  _swipeForceMultiplier: 1
 --- !u!58 &2795685063815291479
 CircleCollider2D:
   m_ObjectHideFlags: 0

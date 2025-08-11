@@ -23,7 +23,7 @@ namespace TestProject
             _timer += Time.deltaTime;
             if (_timer >= 0.5f)
             {
-                Score += 1;
+                Score += 10;
                 UpdateScoreText();
                 _timer = 0f;
             }

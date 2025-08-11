@@ -11,7 +11,7 @@ namespace TestProject
             Debug.Log($"Player collected bonus {gameObject.name}. Gained {Score} points.");
             player.GetComponent<PlayerScore>().Increase(Score);
             player.GetComponent<PlayerStatus>().IncreaseHealth(HP);
-            Destroy(gameObject);
+            Destroy(gameObject, Constants.AnimationDuration);
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -19,24 +20,27 @@ namespace TestProject
 
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _previousButton;
-
+        [SerializeField] private TMP_Text _priceText;
         [SerializeField] private GameObject _shopButtonPrefab;
 
         private List<SkinData> _allSkins;
         private ShopManager _shopManager;
         private DiContainer _container;
+        private PlayerDataService _playerDataService;
 
         private List<GameObject> _instantiatedPanels = new List<GameObject>();
         private List<ShopItemButton> _spawnedButtons = new List<ShopItemButton>();
         private int _currentPageIndex = 0;
         
         [Inject]
-        public void Construct(List<SkinData> allSkins, ShopManager shopManager, DiContainer container)
+        public void Construct(List<SkinData> allSkins, ShopManager shopManager, 
+            DiContainer container, PlayerDataService playerDataService)
         {
             _allSkins = allSkins;
             _container = container;
             _shopManager = shopManager;
             _shopManager.OnSkinStateChanged += RefreshAllButtonVisuals;
+            _playerDataService = playerDataService;
         }
         
         public override void Open()
@@ -50,6 +54,7 @@ namespace TestProject
 
             _nextButton.onClick.AddListener(ShowNextPage);
             _previousButton.onClick.AddListener(ShowPreviousPage);
+            _priceText.text = _playerDataService.PlayerData.Coins.ToString();
         }
 
         public override void Close()

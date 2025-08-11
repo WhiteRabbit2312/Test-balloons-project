@@ -34,6 +34,7 @@ namespace TestProject
 
         public virtual void Close()
         {
+            Debug.LogError("Close");
             if(_mainMenuWindow != null)
                 _mainMenuWindow.SetActive(true);
             Window.alpha = 0f;

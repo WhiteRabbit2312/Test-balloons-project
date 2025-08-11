@@ -8,7 +8,9 @@ namespace TestProject
 {
     public class BuyPopUp : UIPopup
     {
+        [Header("BuyPopUp")]
         [SerializeField] private Button _buyButton;
+        [SerializeField] private Button _cancelButton;
         [SerializeField] private Image _itemImg;
         private SkinData _skinData;
         private ShopManager _shopManager;
@@ -23,6 +25,7 @@ namespace TestProject
         {
             base.Awake();
             _buyButton.onClick.AddListener(Buy);
+            _cancelButton.onClick.AddListener(Close);
         }
 
         public override void Open()
@@ -30,7 +33,7 @@ namespace TestProject
             base.Open();
             _itemImg.sprite = _skinData.SkinSprite;
         }
-
+        
         public void Init(SkinData skinData)
         {
             _skinData = skinData;

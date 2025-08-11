@@ -16,6 +16,7 @@ namespace TestProject
         
         public const string PreGameObjectsName = "PreGameObjects";
         public const string ActiveObjectsName = "ActiveObjects";
+        public const string ActiveCollectableName = "ActiveCollectables";
         public const float AnimationDuration = 0.5f;
     }
 }
