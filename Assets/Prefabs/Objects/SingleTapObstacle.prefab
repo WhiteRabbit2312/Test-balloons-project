@@ -129,8 +129,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1923551326088024254}
   - component: {fileID: 606295406339741492}
-  - component: {fileID: 8347392687958482721}
   - component: {fileID: -6991325936870197468}
+  - component: {fileID: 6879603831601226497}
   m_Layer: 8
   m_Name: SingleTapObstacle
   m_TagString: Untagged
@@ -181,22 +181,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8347392687958482721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5644025964329778786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e1289062e2d9e047a076e5e9b8bf13c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _obstacleAnimation: {fileID: 561214857647322016}
-  Score: 60
-  HP: 1
-  _tapsRequired: 4
 --- !u!58 &-6991325936870197468
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,3 +216,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6879603831601226497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644025964329778786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f10ada8fd448594faebab3badeae2ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _obstacleAnimation: {fileID: 561214857647322016}
+  Score: 10
+  HP: 1
+  _animator: {fileID: 4256414018981061411}

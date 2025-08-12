@@ -17,6 +17,7 @@ namespace TestProject
 
         public void Disappear()
         {
+            Debug.LogError("Disappear");
             _animator.Play("Disappear");
         }
     }

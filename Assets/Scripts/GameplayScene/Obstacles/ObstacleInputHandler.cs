@@ -26,6 +26,15 @@ namespace TestProject
         
         private void Update()
         {
+#if UNITY_EDITOR
+            HandleMouseInput();
+#else
+            HandleTouchInput();
+#endif
+        }
+        
+        private void HandleMouseInput()
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 _swipeStartTime = Time.time;
@@ -33,18 +42,42 @@ namespace TestProject
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                float swipeTime = Time.time - _swipeStartTime;
-                Vector2 swipeEndPosition = Input.mousePosition;
-                float swipeDistance = Vector2.Distance(_swipeStartPosition, swipeEndPosition);
+                ProcessEndEvent(Input.mousePosition);
+            }
+        }
+        
+        private void HandleTouchInput()
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
 
-                if (swipeTime > 0.02f && swipeTime < _maxSwipeTime && swipeDistance > _minSwipeDistance)
+                switch (touch.phase)
                 {
-                    ProcessSwipe(_swipeStartPosition, swipeEndPosition, swipeTime);
+                    case TouchPhase.Began:
+                        _swipeStartTime = Time.time;
+                        _swipeStartPosition = touch.position;
+                        break;
+
+                    case TouchPhase.Ended:
+                        ProcessEndEvent(touch.position);
+                        break;
                 }
-                else
-                {
-                    ProcessTap(_swipeStartPosition);
-                }
+            }
+        }
+        
+        private void ProcessEndEvent(Vector2 endPosition)
+        {
+            float swipeTime = Time.time - _swipeStartTime;
+            float swipeDistance = Vector2.Distance(_swipeStartPosition, endPosition);
+
+            if (swipeTime < _maxSwipeTime && swipeDistance > _minSwipeDistance)
+            {
+                ProcessSwipe(_swipeStartPosition, endPosition, swipeTime);
+            }
+            else
+            {
+                ProcessTap(_swipeStartPosition);
             }
         }
         
@@ -71,6 +104,8 @@ namespace TestProject
         
         private void ProcessSwipe(Vector2 startPos, Vector2 endPos, float swipeTime)
         {
+            if (swipeTime <= 0) return;
+
             Ray ray = _mainCamera.ScreenPointToRay(startPos);
             RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity, _interactableLayers);
 
