@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +20,6 @@ namespace TestProject
 
         private void ExitGame()
         {
-            Debug.Log("ExitGame");
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else

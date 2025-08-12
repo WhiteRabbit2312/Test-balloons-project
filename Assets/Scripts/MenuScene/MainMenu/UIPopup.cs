@@ -1,5 +1,3 @@
-using System;
-
 namespace TestProject
 {
     public abstract class UIPopup : UIWindowBase

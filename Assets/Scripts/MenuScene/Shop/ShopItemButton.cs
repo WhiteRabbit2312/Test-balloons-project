@@ -13,14 +13,12 @@ namespace TestProject
 
         private SkinData _skinData;
         private ShopManager _shopManager;
-        private PlayerData _playerData; 
         private BuyPopUp _buyPopUp;
         
         [Inject]
         public void Construct(ShopManager shopManager, PlayerDataService playerDataService)
         {
             _shopManager = shopManager;
-            _playerData = playerDataService.PlayerData;
         }
         
         private void OnEnable()
