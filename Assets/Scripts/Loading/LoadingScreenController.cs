@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace TestProject
@@ -8,32 +9,42 @@ namespace TestProject
     public class LoadingScreenController : MonoBehaviour
     {
         [SerializeField] private Slider _progressBar;
-
-        [SerializeField] private string _sceneToLoad = "MainMenuScene";
+        [SerializeField] private string _sceneToLoad;
+        [SerializeField] private float _fakeLoadingTime = 3.0f;
 
         void Start()
         {
-            StartCoroutine(LoadSceneAsync());
+            if (_progressBar != null)
+            {
+                _progressBar.value = 0;
+            }
+
+            StartCoroutine(LoadYourAsyncScene());
         }
 
-        private IEnumerator LoadSceneAsync()
+        IEnumerator LoadYourAsyncScene()
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(_sceneToLoad);
-            operation.allowSceneActivation = false;
-            while (!operation.isDone)
+            float elapsedTime = 0f;
+            while (elapsedTime < _fakeLoadingTime)
             {
-                float progress = Mathf.Clamp01(operation.progress / 0.9f);
-                _progressBar.value = Mathf.MoveTowards(_progressBar.value, progress, Time.deltaTime);
+                elapsedTime += Time.deltaTime;
+                float progress = Mathf.Clamp01(elapsedTime / _fakeLoadingTime);
 
-                if (operation.progress >= 0.9f && _progressBar.value >= 0.99f)
+                if (_progressBar != null)
                 {
-                    _progressBar.value = 1f;
-
-                    operation.allowSceneActivation = true;
+                    _progressBar.value = progress;
                 }
 
                 yield return null;
             }
+
+            if (_progressBar != null)
+            {
+                _progressBar.value = 1;
+            }
+
+            yield return new WaitForSeconds(0.2f);
+            SceneManager.LoadScene(_sceneToLoad);
         }
     }
 }

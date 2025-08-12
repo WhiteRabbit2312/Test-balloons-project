@@ -42,13 +42,15 @@ namespace TestProject
             _titleImage.sprite= config.Title;
             _scoreText.text = finalScore.ToString();
 
+            _playerDataService.PlayerData.Coins += finalScore;
+            
             int reward = 0;
             if (config.CalculateReward)
             {
                 reward = CountReward(finalScore);
                 _playerDataService.PlayerData.Coins += reward;
-                _playerDataService.Save();
             }
+            _playerDataService.Save();
             
             _rewardText.text = reward.ToString();
 
@@ -64,6 +66,7 @@ namespace TestProject
         {
             _canvasGroup.alpha = 1;
             _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
             _canvasGroup.ignoreParentGroups = true;
         }
         
