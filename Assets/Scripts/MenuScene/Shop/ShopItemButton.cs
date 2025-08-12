@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,7 +44,6 @@ namespace TestProject
         {
             if (!_shopManager.IsSkinPurchased(_skinData.SkinID))
             {
-                //_shopManager.TryBuySkin(_skinData);
                 _buyPopUp.Init(_skinData);
                 _buyPopUp.Open();
             }

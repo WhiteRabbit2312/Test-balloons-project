@@ -7,7 +7,6 @@ namespace TestProject
     [RequireComponent(typeof(Button))]
     public class StartButton : MonoBehaviour
     {
-        [SerializeField] private GameObject _balloons;
         private Button _startButton;
         private void Awake()
         {
@@ -15,15 +14,14 @@ namespace TestProject
             _startButton.onClick.AddListener(StartGame);
         }
 
-        private void StartGame()
+        private void OnDestroy()
         {
-            SpawnTransition();
-            SceneManager.LoadSceneAsync(Constants.LevelSceneName);
+            _startButton.onClick.RemoveListener(StartGame);
         }
 
-        private void SpawnTransition()
+        private void StartGame()
         {
-            //Instantiate(_balloons, transform.position, Quaternion.identity);
+            SceneManager.LoadSceneAsync(Constants.LevelSceneName);
         }
     }
 }

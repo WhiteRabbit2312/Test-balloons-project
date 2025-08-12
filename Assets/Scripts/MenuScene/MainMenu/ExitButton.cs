@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,11 @@ namespace TestProject
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(ExitGame);
+        }
+
+        private void OnDestroy()
+        {
+            _button.onClick.RemoveListener(ExitGame);
         }
 
         private void ExitGame()

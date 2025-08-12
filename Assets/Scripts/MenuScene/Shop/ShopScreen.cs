@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -137,6 +135,8 @@ namespace TestProject
 
         private void OnDestroy()
         {
+            _nextButton.onClick.RemoveListener(ShowNextPage);
+            _previousButton.onClick.RemoveListener(ShowPreviousPage);
             if (_shopManager != null)
             {
                 _shopManager.OnSkinStateChanged -= RefreshAllButtonVisuals;

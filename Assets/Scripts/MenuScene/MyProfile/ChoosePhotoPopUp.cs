@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +14,14 @@ namespace TestProject
             if (_additionalCloseButton != null)
             {
                 _additionalCloseButton.onClick.AddListener(() => UiManager.ClosePopup(this));
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_additionalCloseButton != null)
+            {
+                _additionalCloseButton.onClick.RemoveListener(() => UiManager.ClosePopup(this));
             }
         }
     }

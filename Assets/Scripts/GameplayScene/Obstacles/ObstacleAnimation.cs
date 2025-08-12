@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace TestProject
@@ -8,6 +5,7 @@ namespace TestProject
     [RequireComponent(typeof(Animator))]
     public class ObstacleAnimation : MonoBehaviour
     {
+        private readonly int _disappearHash = Animator.StringToHash("Disappear");
         private Animator _animator;
 
         private void Awake()
@@ -17,8 +15,7 @@ namespace TestProject
 
         public void Disappear()
         {
-            Debug.LogError("Disappear");
-            _animator.Play("Disappear");
+            _animator.Play(_disappearHash);
         }
     }
 }

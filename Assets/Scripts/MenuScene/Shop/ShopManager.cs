@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace TestProject
@@ -66,12 +65,6 @@ namespace TestProject
             {
                 playerData.Coins -= skinToBuy.Price;
                 playerData.PurchasedSkinIDs.Add(skinToBuy.SkinID);
-
-                foreach (var skin in _playerDataService.PlayerData.PurchasedSkinIDs)
-                {
-                    Debug.LogError("Purchased skin: " + skin);
-                }
-                //SelectSkin(skinToBuy.SkinID);
                 _playerDataService.Save();
                 OnSkinStateChanged?.Invoke();
                 return true;

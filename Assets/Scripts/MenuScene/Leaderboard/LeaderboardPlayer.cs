@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +11,7 @@ namespace TestProject
         [SerializeField] private Image _playerIcon;
         [SerializeField] private Image _background; 
 
-        public void Init(int rank, string playerName, int score, Sprite icon)
+        public void Init(string playerName, int score, Sprite icon)
         {
             if (_nameText) _nameText.text = playerName;
             if (_scoreText) _scoreText.text = score.ToString();

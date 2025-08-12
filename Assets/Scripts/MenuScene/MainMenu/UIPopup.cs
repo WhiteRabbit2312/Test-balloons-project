@@ -1,3 +1,5 @@
+using System;
+
 namespace TestProject
 {
     public abstract class UIPopup : UIWindowBase
@@ -12,6 +14,18 @@ namespace TestProject
             if (CloseButton != null)
             {
                 CloseButton.onClick.AddListener(() => UiManager.ClosePopup(this));
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (OpenButton != null)
+            {
+                OpenButton.onClick.RemoveListener(() => UiManager.OpenPopup(this));
+            }
+            if (CloseButton != null)
+            {
+                CloseButton.onClick.RemoveListener(() => UiManager.ClosePopup(this));
             }
         }
     }

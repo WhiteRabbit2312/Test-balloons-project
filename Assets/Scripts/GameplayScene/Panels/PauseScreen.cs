@@ -32,5 +32,10 @@ namespace TestProject
             Time.timeScale = 1;
             SceneManager.LoadSceneAsync(Constants.LevelSceneName);
         }
+
+        private void OnDestroy()
+        {
+            _homeButton.onClick.RemoveListener(Home);
+        }
     }
 }

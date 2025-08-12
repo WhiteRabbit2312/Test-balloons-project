@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -34,7 +33,6 @@ namespace TestProject
 
         public virtual void Close()
         {
-            Debug.LogError("Close");
             if(_mainMenuWindow != null)
                 _mainMenuWindow.SetActive(true);
             Window.alpha = 0f;

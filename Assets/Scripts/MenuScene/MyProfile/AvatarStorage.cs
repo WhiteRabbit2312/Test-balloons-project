@@ -11,14 +11,12 @@ namespace TestProject
         {
             if (texture == null)
             {
-                Debug.LogError("Empty texture.");
                 return;
             }
             try
             {
                 byte[] bytes = texture.EncodeToPNG();
                 File.WriteAllBytes(FilePath, bytes);
-                Debug.Log("Avatar saved: " + FilePath);
             }
             catch (System.Exception e)
             {

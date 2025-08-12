@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -13,6 +10,9 @@ namespace TestProject
         public int Score { get; private set; }
         private float _timer = 0;
         private bool _isScoreCount;
+
+        private readonly float _cooldownScoreCount = 0.5f;
+        private readonly int _scoreCount = 10;
 
         private void Start()
         {
@@ -27,9 +27,9 @@ namespace TestProject
                 return;
             
             _timer += Time.deltaTime;
-            if (_timer >= 0.5f)
+            if (_timer >= _cooldownScoreCount)
             {
-                Score += 10;
+                Score += _scoreCount;
                 UpdateScoreText();
                 _timer = 0f;
             }
@@ -55,6 +55,11 @@ namespace TestProject
         private void UpdateScoreText()
         {
             _scoreText.text = Score.ToString();
+        }
+
+        private void OnDestroy()
+        {
+            _playerFinish.OnFinished -= StopCounting;
         }
     }
 }

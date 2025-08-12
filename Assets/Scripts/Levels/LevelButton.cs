@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -71,6 +68,11 @@ namespace TestProject
         private void OnButtonClick()
         {
             _levelManager.StartLevel(_levelData);
+        }
+
+        private void OnDestroy()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
         }
     }
 }

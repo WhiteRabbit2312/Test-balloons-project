@@ -80,7 +80,7 @@ namespace TestProject
 
             var topPlayer = sortedEntries[0];
             Sprite topPlayerSprite = topPlayer.IsRealPlayer ? GetRealPlayerSprite() : _defaultSprite;
-            _topPlayerDisplay.Init(1, topPlayer.Name, topPlayer.Score, topPlayerSprite);
+            _topPlayerDisplay.Init(topPlayer.Name, topPlayer.Score, topPlayerSprite);
             if (topPlayer.IsRealPlayer)
             {
                 _topPlayerDisplay.Highlight(_realPlayerHighlightColor);
@@ -94,7 +94,7 @@ namespace TestProject
                 var data = sortedEntries[i];
 
                 Sprite playerSprite = data.IsRealPlayer ? GetRealPlayerSprite() : _defaultSprite;
-                playerEntry.Init(i + 1, data.Name, data.Score, playerSprite);
+                playerEntry.Init(data.Name, data.Score, playerSprite);
 
                 if (data.IsRealPlayer)
                 {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +14,11 @@ namespace TestProject
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(() => SceneManager.LoadScene(_mainMenuSceneName));
+        }
+
+        private void OnDestroy()
+        {
+            _button.onClick.RemoveListener(() => SceneManager.LoadScene(_mainMenuSceneName));
         }
     }
 }

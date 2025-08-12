@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -45,6 +43,12 @@ namespace TestProject
             {
                 Close();
             }
+        }
+
+        private void OnDestroy()
+        {
+            _buyButton.onClick.RemoveListener(Buy);
+            _cancelButton.onClick.RemoveListener(Close);
         }
     }
 }

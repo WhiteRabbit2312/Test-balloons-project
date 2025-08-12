@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -48,12 +46,14 @@ namespace TestProject
 
             if (_avatar != null && _avatar.NewAvatarTexture != null)
             {
-                Debug.LogError("SaveAvatar");
                 _avatarStorage.SaveAvatar(_avatar.NewAvatarTexture);
                 _avatar.ClearNewAvatar();
             }
-            
-            Debug.Log("Profile saved!");
+        }
+
+        private void OnDestroy()
+        {
+            _saveButton.onClick.RemoveListener(Save);
         }
     }
 }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -74,6 +71,11 @@ namespace TestProject
         {
             int thousands = score / 100;
             return thousands * 100;
+        }
+
+        private void OnDestroy()
+        {
+            _tapTpReturnButton.onClick.RemoveListener(ReturnToLevelMenu);
         }
     }
 }

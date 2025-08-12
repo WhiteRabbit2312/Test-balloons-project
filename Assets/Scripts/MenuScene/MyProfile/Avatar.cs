@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using TestProject;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -41,10 +37,6 @@ namespace TestProject
             if (savedAvatar != null)
             {
                 _avatarImage.sprite = savedAvatar;
-            }
-            else
-            {
-                Debug.LogError("Not loaded avatar");
             }
         }
 
@@ -99,6 +91,12 @@ namespace TestProject
         public void ClearNewAvatar()
         {
             NewAvatarTexture = null;
+        }
+
+        private void OnDestroy()
+        {
+            _takePicture.onClick.AddListener(TakePicture);
+            _pickImage.onClick.AddListener(PickImage);
         }
     }
 }
