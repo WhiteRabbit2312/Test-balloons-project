@@ -77,7 +77,7 @@ MonoBehaviour:
   _obstacleAnimation: {fileID: 442855925427379136}
   Score: 100
   HP: 1
-  _swipeForceMultiplier: 1
+  _swipeForceMultiplier: 0.5
 --- !u!58 &-6035398418727485652
 CircleCollider2D:
   m_ObjectHideFlags: 0

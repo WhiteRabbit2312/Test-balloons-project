@@ -30,7 +30,10 @@ namespace TestProject
 
         public void IncreaseHealth(int amount)
         {
-            _currentHealth += amount;
+            if (_currentHealth < MaxHealth)
+            {
+                _currentHealth += amount;
+            }
             UpdateHealthBar();
         }
 
@@ -38,7 +41,6 @@ namespace TestProject
         {
             _currentHealth -= amount;
             UpdateHealthBar();
-            Debug.LogError("_currentHealth: " + _currentHealth);
             if (_currentHealth <= 0)
             {
                 _endgameWindow.Show(_playerScore.Score, _panelConfig);

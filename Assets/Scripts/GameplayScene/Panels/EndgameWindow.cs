@@ -42,7 +42,7 @@ namespace TestProject
             _titleImage.sprite= config.Title;
             _scoreText.text = finalScore.ToString();
 
-            _playerDataService.PlayerData.Coins += finalScore;
+            _playerDataService.PlayerData.Score += finalScore;
             
             int reward = 0;
             if (config.CalculateReward)
