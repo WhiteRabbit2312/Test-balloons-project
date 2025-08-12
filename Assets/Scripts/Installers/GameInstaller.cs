@@ -10,6 +10,7 @@ namespace TestProject
             Container.Bind<LevelManager>().AsSingle();
             Container.Bind<ShopManager>().AsSingle();
             Container.Bind<CollectableContainer>().AsSingle();
+            Container.Bind<AvatarStorage>().AsSingle();
         }
     }
 }

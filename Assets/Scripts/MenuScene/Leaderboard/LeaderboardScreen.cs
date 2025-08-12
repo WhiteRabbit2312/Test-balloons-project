@@ -12,21 +12,23 @@ namespace TestProject
         [SerializeField] private LeaderboardPlayer _playerInLeaderboardPrefab;
         
         [SerializeField] private int _fakePlayerCount = 3; 
-        [SerializeField] private List<string> _playerNames = new List<string> { "ShadowStriker", "CyberNinja", "Vortex", "Phoenix", "Quantum", "Rogue", "Blaze", "Serpent" };
+        [SerializeField] private List<string> _playerNames = new List<string> { "Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8" };
         [SerializeField] private Vector2Int _scoreRange = new Vector2Int(100, 5000); 
-
-
+        
         [SerializeField] private Sprite _defaultSprite; 
         [SerializeField] private Color _realPlayerHighlightColor = Color.yellow; 
         
-        [SerializeField] private LeaderboardPlayer _topPlayerDisplay; 
+        [SerializeField] private LeaderboardPlayer _topPlayerDisplay;
+        [SerializeField] private string _defaultPlayerName;
 
         private PlayerDataService _playerDataService;
+        private AvatarStorage _avatarStorage;
         private List<LeaderboardPlayer> _spawnedEntries = new List<LeaderboardPlayer>();
         [Inject]
-        public void Construct(PlayerDataService playerDataService)
+        public void Construct(PlayerDataService playerDataService, AvatarStorage avatarStorage)
         {
             _playerDataService = playerDataService;
+            _avatarStorage = avatarStorage;
         }
         
         private struct LeaderboardEntryData
@@ -67,7 +69,7 @@ namespace TestProject
 
             leaderboardEntries.Add(new LeaderboardEntryData
             {
-                Name = "You",
+                Name = PlayerPrefs.GetString(Constants.PlayerNameID, _defaultPlayerName),
                 Score = _playerDataService.PlayerData.Score,
                 IsRealPlayer = true
             });
@@ -91,7 +93,6 @@ namespace TestProject
                 LeaderboardPlayer playerEntry = Instantiate(_playerInLeaderboardPrefab, _leaderboardContainer);
                 var data = sortedEntries[i];
 
-                //тут нужно подгрузить эту аватарку игрока
                 Sprite playerSprite = data.IsRealPlayer ? GetRealPlayerSprite() : _defaultSprite;
                 playerEntry.Init(i + 1, data.Name, data.Score, playerSprite);
 
@@ -105,8 +106,9 @@ namespace TestProject
 
         private Sprite GetRealPlayerSprite()
         {
-            //тут нужно подгрузить эту аватарку игрока
-            return _defaultSprite;
+            Sprite playerAvatar = _avatarStorage.LoadAvatarAsSprite();
+
+            return playerAvatar != null ? playerAvatar : _defaultSprite;
         }
 
         private void ClearLeaderboard()

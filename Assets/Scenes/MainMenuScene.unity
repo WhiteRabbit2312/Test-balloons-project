@@ -779,6 +779,7 @@ MonoBehaviour:
   _saveButton: {fileID: 1003191628}
   _playerNameInputField: {fileID: 1219814449}
   _playerNameText: {fileID: 405267583}
+  _avatar: {fileID: 1938278190}
 --- !u!1 &109994205
 GameObject:
   m_ObjectHideFlags: 0
@@ -3867,6 +3868,7 @@ MonoBehaviour:
   _defaultSprite: {fileID: 21300000, guid: db0cd32bf39029e4ea5c67d9478ce3bd, type: 3}
   _realPlayerHighlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   _topPlayerDisplay: {fileID: 535099546}
+  _defaultPlayerName: Name Nickname
 --- !u!1 &793298314
 GameObject:
   m_ObjectHideFlags: 0
@@ -8910,7 +8912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -122, y: -83}
+  m_AnchoredPosition: {x: -122, y: -335}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1884635051
