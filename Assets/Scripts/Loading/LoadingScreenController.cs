@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,11 @@ namespace TestProject
         [SerializeField] private Slider _progressBar;
         [SerializeField] private string _sceneToLoad;
         [SerializeField] private float _fakeLoadingTime = 3.0f;
+
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+        }
 
         void Start()
         {

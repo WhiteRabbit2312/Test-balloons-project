@@ -13,13 +13,11 @@ namespace TestProject
         public override void OnTap()
         {
             _currentTaps++;
-            Debug.Log($"{gameObject.name} tapped. Taps remaining: {_tapsRequired - _currentTaps}");
-
             transform.localScale *= 0.9f;
 
             if (_currentTaps >= _tapsRequired)
             {
-                Debug.Log($"{gameObject.name} was destroyed by multiple taps.");
+                ObstacleAnimation.Disappear();
                 Destroy(gameObject, Constants.AnimationDuration);
             }
         }

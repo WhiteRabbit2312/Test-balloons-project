@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68033511b3e7c3842b6830d16cc9ae95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstacleAnimation: {fileID: 8519030680982758968}
+  ObstacleAnimation: {fileID: 8519030680982758968}
   Score: 300
   HP: 1
   _swipeForceMultiplier: 1

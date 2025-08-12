@@ -10,7 +10,7 @@ namespace TestProject
     [RequireComponent(typeof(Collider2D))]
     public abstract class BaseInteractiveObject : MonoBehaviour, IInteractiveObject
     {
-        [SerializeField] private ObstacleAnimation _obstacleAnimation;
+        [SerializeField] protected ObstacleAnimation ObstacleAnimation;
         [SerializeField] protected int Score = 10;
         [SerializeField] protected int HP = 1;
         protected Rigidbody2D Rb;
@@ -36,7 +36,7 @@ namespace TestProject
         {
             if (other.gameObject.TryGetComponent(out PlayerMovement player))
             {
-                _obstacleAnimation.Disappear();
+                ObstacleAnimation.Disappear();
                 OnCollideWithPlayer(other.gameObject);
             }
             
