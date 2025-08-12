@@ -330,7 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8265f2e4a7cd3c42b6d3017217ab8b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _balloons: {fileID: 0}
 --- !u!1 &37560342
 GameObject:
   m_ObjectHideFlags: 0
@@ -6987,7 +6986,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 0}
+  m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1360851661
 MonoBehaviour:
