@@ -7389,7 +7389,7 @@ MonoBehaviour:
     balls are bonuses, and if the player touches them, they will gain points and
     life\n   The player wins if they reach the finish line - the end of the level\nThe
     player can also lose if they encounter a large number of obstacles and run out
-    of health"
+    of health.\n   Stars can also be collected at the level"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e199d538edde5674bb3a40d6e730aaa9, type: 2}
   m_sharedMaterial: {fileID: 983900368732560105, guid: e199d538edde5674bb3a40d6e730aaa9, type: 2}
@@ -7893,7 +7893,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 951358154}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.43777925
+  m_Size: 0.41617247
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

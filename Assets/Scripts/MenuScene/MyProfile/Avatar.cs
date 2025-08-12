@@ -20,14 +20,11 @@ public class Avatar : MonoBehaviour
     {
         NativeGallery.GetImageFromGallery( ( path ) =>
         {
-            Debug.Log( "Image path: " + path );
             if( path != null )
             {
-                // Create Texture from selected image
                 Texture2D texture = NativeGallery.LoadImageAtPath( path, MaxSize );
                 if( texture == null )
                 {
-                    Debug.Log( "Couldn't load texture from " + path );
                     return;
                 }
 
@@ -40,14 +37,11 @@ public class Avatar : MonoBehaviour
     {
         NativeCamera.TakePicture( ( path ) =>
         {
-            Debug.Log( "Image path: " + path );
             if( path != null )
             {
-                // Create a Texture2D from the captured image
                 Texture2D texture = NativeCamera.LoadImageAtPath( path, MaxSize );
                 if( texture == null )
                 {
-                    Debug.Log( "Couldn't load texture from " + path );
                     return;
                 }
 

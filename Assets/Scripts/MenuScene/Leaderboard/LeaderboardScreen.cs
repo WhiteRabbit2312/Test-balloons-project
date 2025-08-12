@@ -91,6 +91,7 @@ namespace TestProject
                 LeaderboardPlayer playerEntry = Instantiate(_playerInLeaderboardPrefab, _leaderboardContainer);
                 var data = sortedEntries[i];
 
+                //тут нужно подгрузить эту аватарку игрока
                 Sprite playerSprite = data.IsRealPlayer ? GetRealPlayerSprite() : _defaultSprite;
                 playerEntry.Init(i + 1, data.Name, data.Score, playerSprite);
 
@@ -104,6 +105,7 @@ namespace TestProject
 
         private Sprite GetRealPlayerSprite()
         {
+            //тут нужно подгрузить эту аватарку игрока
             return _defaultSprite;
         }
 
